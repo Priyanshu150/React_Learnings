@@ -38,5 +38,27 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: red;
+}
+
+#blackBtn{
+  background-color: black;
+}
+
+#redBtn{
+  background-color: red;
+}
+
+#yellowBtn{
+  background-color: yellow;
+  color: black;
+}
+
+#blueBtn{
+  background-color: blue;
+}
+
+#whiteBtn{
+  background-color: white;
+  color: black;
 }
