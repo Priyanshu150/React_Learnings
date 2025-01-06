@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   const [color, setColor] = useState("olive")
   return (
-    <div style={{backgroundColor: color}}>
+    <div className="bgChange" style={{backgroundColor: color}}>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
