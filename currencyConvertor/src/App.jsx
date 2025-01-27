@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import InputBox from './components/InputBox'
-import useCurrencyInfo from '.hooks/useCurrencyInfo'
-import './App.css'
+import useCurrencyInfo from './hooks/useCurrencyInfo'
+
 
 function App() {
   const [amount, setAmount] = useState(0);
@@ -27,7 +27,7 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/1366957/pexels-photo-1366957.jpeg?auto=compress&cs=tinysrgb&w=600')`,
+        backgroundImage: `url('https://images.pexels.com/photos/10003549/pexels-photo-10003549.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
       }}
     >
       <div className="w-full">
@@ -35,20 +35,24 @@ function App() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-
+              convert();
             }}
           >
             <div className="w-full mb-1">
               <InputBox
                 label="From"
-
+                amount={amount}
+                currencyOptions={options}
+                onCurrencyChange={(currency) => setFrom(currency)}
+                onAmountChange={(newAmount) => setAmount(newAmount)}
+                selectCurrency={from}
               />
             </div>
             <div className="relative w-full h-0.5">
               <button
                 type="button"
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
-
+                onClick={swap}
               >
                 swap
               </button>
@@ -56,11 +60,15 @@ function App() {
             <div className="w-full mt-1 mb-4">
               <InputBox
                 label="To"
-
+                amount={convertedAmount}
+                currencyOptions={options}
+                onCurrencyChange={(currency) => setTo(currency)}
+                selectCurrency={to}
+                amountDisabled
               />
             </div>
             <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
-              Convert
+              Convert {from.toUpperCase()} to {to.toUpperCase()}
             </button>
           </form>
         </div>
