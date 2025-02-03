@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Footer() {
+    const location = useLocation();
+
     return (
         <footer className="bg-white border-y">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -22,16 +24,20 @@ export default function Footer() {
                                 <li className="mb-4">
                                     <Link
                                         to="/"
-                                        className={({isActive}) => `hover:underline ${isActive ? "text-orange-700" : "text-gray-700"}`}
+                                        className={`hover:underline ${location.pathname === '/' ? "text-orange-700" : "text-gray-700"}`}
                                     >
                                         Home
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/about" className="hover:underline">
+                                    <Link
+                                        to="/about"
+                                        className={`hover:underline ${location.pathname === '/about' ? "text-orange-700" : "text-gray-700"}`}
+                                    >
                                         About
                                     </Link>
                                 </li>
+                                
                             </ul>
                         </div>
                         <div>
